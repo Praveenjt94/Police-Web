@@ -37,20 +37,25 @@ include_once('_shared/header.php');
                             <h3 class="profile-username text-center"><?php echo $_SESSION['logged_user']['name']; ?></h3>
 
                             <p class="text-muted text-center"><?php echo $_SESSION['logged_user']['type']; ?></p>
+                            <?php
+                            if ($_SESSION['logged_user']['type'] == "officer") {
+                                ?>
+                                <ul class="list-group list-group-unbordered">
+                                    <li class="list-group-item">
+                                        <b>Total Fines</b> <a class="pull-right">1,322</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Total Revenue</b> <a class="pull-right">543</a>
+                                    </li>
+                                    <!--                                <li class="list-group-item">-->
+                                    <!--                                    <b>Friends</b> <a class="pull-right">13,287</a>-->
+                                    <!--                                </li>-->
+                                </ul>
+                                <?php
+                            }
+                            ?>
 
-                            <ul class="list-group list-group-unbordered">
-                                <li class="list-group-item">
-                                    <b>Total Fines</b> <a class="pull-right">1,322</a>
-                                </li>
-                                <li class="list-group-item">
-                                    <b>Total Revenue</b> <a class="pull-right">543</a>
-                                </li>
-<!--                                <li class="list-group-item">-->
-<!--                                    <b>Friends</b> <a class="pull-right">13,287</a>-->
-<!--                                </li>-->
-                            </ul>
-
-<!--                            <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>-->
+                            <!--                            <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>-->
                         </div>
                         <!-- /.box-body -->
                     </div>
@@ -116,7 +121,8 @@ include_once('_shared/header.php');
                                     <div class="form-group">
                                         <label for="inputName" class="col-sm-2 control-label">Name</label>
                                         <div class="col-sm-10">
-                                            <input type="name" class="form-control" id="inputName" placeholder="Name" value="<?php echo $_SESSION['logged_user']['name']; ?>">
+                                            <input type="name" class="form-control" id="inputName" placeholder="Name"
+                                                   value="<?php echo $_SESSION['logged_user']['name']; ?>">
                                         </div>
                                     </div>
                                     <div class="form-group">

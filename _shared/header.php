@@ -102,7 +102,7 @@ if (!isset($_SESSION['logged_user'])) {
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="assets/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                            <span class="hidden-xs">Admin 1</span>
+                            <span class="hidden-xs"><?php echo $_SESSION['logged_user']['name']; ?></span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
@@ -110,8 +110,7 @@ if (!isset($_SESSION['logged_user'])) {
                                 <img src="assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                                 <p>
-                                    Admin 1
-                                    <!--<small>Member since Nov. 2012</small>-->
+                                    <?php echo $_SESSION['logged_user']['name']; ?>
                                 </p>
                             </li>
                             <!-- Menu Footer-->
@@ -142,7 +141,7 @@ if (!isset($_SESSION['logged_user'])) {
                     <img src="assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
-                    <p>Admin 1</p>
+                    <p><?php echo $_SESSION['logged_user']['name']; ?></p>
                 </div>
             </div>
             <!-- search form -->
