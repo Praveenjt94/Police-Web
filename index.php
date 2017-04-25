@@ -1,7 +1,5 @@
 <?php
 include_once('_shared/header.php');
-
-//print_r($_SESSION['logged_user']);
 ?>
 
     <!-- Content Wrapper. Contains page content -->

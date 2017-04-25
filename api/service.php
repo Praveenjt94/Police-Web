@@ -41,9 +41,9 @@ if (isset($_POST['login'])) {
     header('Location: ../officers.php');
 } else if (isset($_GET{'logout'})) {
     // do logout process
+    session_start();
+    unset($_SESSION);
     session_destroy();
-    session_unset();
-    $_SESSION['logged_user'] = array();
     header('Location: ../login.php');
 }
 
