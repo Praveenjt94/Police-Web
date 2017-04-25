@@ -40,17 +40,17 @@ include_once('_shared/header.php');
 
                             <ul class="list-group list-group-unbordered">
                                 <li class="list-group-item">
-                                    <b>Followers</b> <a class="pull-right">1,322</a>
+                                    <b>Total Fines</b> <a class="pull-right">1,322</a>
                                 </li>
                                 <li class="list-group-item">
-                                    <b>Following</b> <a class="pull-right">543</a>
+                                    <b>Total Revenue</b> <a class="pull-right">543</a>
                                 </li>
-                                <li class="list-group-item">
-                                    <b>Friends</b> <a class="pull-right">13,287</a>
-                                </li>
+<!--                                <li class="list-group-item">-->
+<!--                                    <b>Friends</b> <a class="pull-right">13,287</a>-->
+<!--                                </li>-->
                             </ul>
 
-                            <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+<!--                            <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>-->
                         </div>
                         <!-- /.box-body -->
                     </div>
@@ -59,7 +59,7 @@ include_once('_shared/header.php');
                     <!-- About Me Box -->
                     <div class="box box-primary">
                         <div class="box-header with-border">
-                            <h3 class="box-title">About Me</h3>
+                            <h3 class="box-title">About</h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
