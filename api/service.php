@@ -1,7 +1,5 @@
 <?php
 
-include('../backend/dbConnect.php');
-
 if (isset($_POST['login'])) {
     // do login process
     include_once('../backend/dbConnect.php');
