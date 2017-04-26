@@ -163,6 +163,28 @@ if (isset($request->action) && $request->action == "login") {
     header('Content-Type: application/json');
     $conn->close();
     echo json_encode($res);
+} else if (isset($request->action) && $request->action == "get_fines") {
+    // do login process
+    include_once('../backend/dbConnect.php');
+    if ($request->type == "officer") {
+        // police officer
+    } else {
+        // driver
+        $sql = "SELECT * FROM fine WHERE driver_id = " . $request->driver_id;
+        $results = $conn->query($sql);
+        if ($results->num_rows > 0) {
+            $res['data'] = array();
+            while ($row = $results->fetch_assoc()) {
+                array_push($res['data'], $row);
+            }
+            $res['status'] = 'SUCCESS';
+        } else {
+            $res['status'] = 'FAILED';
+        }
+    }
+    header('Content-Type: application/json');
+    $conn->close();
+    echo json_encode($res);
 }
 
 ?>
