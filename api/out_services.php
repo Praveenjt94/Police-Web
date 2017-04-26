@@ -128,6 +128,21 @@ if (isset($request->action) && $request->action == "login") {
     // do login process
     include_once('../backend/dbConnect.php');
     if ($request->type == "officer") {
+        // load rules
+        $rules = array();
+        $sql = "SELECT * FROM fine_rules";
+        $results = $conn->query($sql);
+        if ($results->num_rows > 0) {
+            $res['data'] = array();
+            while ($row = $results->fetch_assoc()) {
+                $rules[$row['id']] = $row['value'];
+            }
+            $res['status'] = 'SUCCESS';
+        } else {
+            $res['status'] = 'FAILED';
+        }
+
+
         // police officer
         $sql = "SELECT * FROM fine WHERE officer_id = " . $request->officer_id;
         $results = $conn->query($sql);
@@ -135,7 +150,7 @@ if (isset($request->action) && $request->action == "login") {
             $res['data'] = array();
             $revenue = 0;
             while ($row = $results->fetch_assoc()) {
-                $revenue += 250;
+                $revenue += $rules[$row['fine_rule_id']];
             }
             $res['data']['fine_count'] = $results->num_rows;
             $res['data']['revenue'] = $revenue;
@@ -144,6 +159,20 @@ if (isset($request->action) && $request->action == "login") {
             $res['status'] = 'FAILED';
         }
     } else {
+        // load rules
+        $rules = array();
+        $sql = "SELECT * FROM fine_rules";
+        $results = $conn->query($sql);
+        if ($results->num_rows > 0) {
+            $res['data'] = array();
+            while ($row = $results->fetch_assoc()) {
+                $rules[$row['id']] = $row['value'];
+            }
+            $res['status'] = 'SUCCESS';
+        } else {
+            $res['status'] = 'FAILED';
+        }
+
         // driver
         $sql = "SELECT * FROM fine WHERE driver_id = " . $request->driver_id;
         $results = $conn->query($sql);
@@ -151,11 +180,19 @@ if (isset($request->action) && $request->action == "login") {
             $res['data'] = array();
             $revenue = 0;
             while ($row = $results->fetch_assoc()) {
-                $revenue += 250;
+                $revenue += $rules[$row['fine_rule_id']];
             }
             $res['data']['fine_count'] = $results->num_rows;
             $res['data']['revenue'] = $revenue;
-            $res['status'] = 'SUCCESS';
+
+            $sql = "SELECT points_count FROM driver WHERE id = " . $request->driver_id;
+            $results = $conn->query($sql);
+            if ($results->num_rows > 0) {
+                $res['data']['points_count'] = $results->fetch_assoc()['points_count'];
+                $res['status'] = 'SUCCESS';
+            } else {
+                $res['status'] = 'FAILED';
+            }
         } else {
             $res['status'] = 'FAILED';
         }
