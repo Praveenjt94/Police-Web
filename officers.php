@@ -19,7 +19,7 @@ include_once('_shared/header.php');
 
     <!-- Main content -->
     <section class="content">
-        <button class="btn btn-primary" data-toggle="modal" data-target="#addOfficerModal">Add Officer</button>
+<!--        <button class="btn btn-primary" data-toggle="modal" data-target="#addOfficerModal">Add Officer</button>-->
     </section>
 
     <div class="modal fade" id="addOfficerModal">

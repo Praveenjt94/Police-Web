@@ -33,7 +33,7 @@ if (isset($_POST['login'])) {
             echo "Officer Save Failed";
         }
     } else {
-        echo "Query Faild";
+        echo "Query Failed";
     }
     $conn->close();
     header('Location: ../officers.php');
@@ -43,6 +43,29 @@ if (isset($_POST['login'])) {
     unset($_SESSION);
     session_destroy();
     header('Location: ../login.php');
+} else if (isset($_POST['send_notification'])) {
+    // do notification saving
+    include_once('../backend/dbConnect.php');
+    $admin = 0;
+    $officer = 0;
+    $driver = 0;
+    if (isset($_POST['admin'])) {
+        $admin = 1;
+    }
+    if (isset($_POST['officer'])) {
+        $officer = 1;
+    }
+    if (isset($_POST['driver'])) {
+        $driver = 1;
+    }
+    $sql = "INSERT INTO notifications(admin,driver,officer,message,created_at) VALUES(" . $admin . "," . $officer . "," . $driver . ",'" . $_POST['message'] . "', NOW())";
+    if ($conn->query($sql)) {
+        echo "Notification Saved";
+    } else {
+        echo "Query Failed";
+    }
+    $conn->close();
+    header('Location: ../admin_functions.php');
 }
 
 ?>

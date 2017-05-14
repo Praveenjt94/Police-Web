@@ -165,6 +165,8 @@ if (!isset($_SESSION['logged_user'])) {
                 <li><a href="critical_hours.php"><i class="fa fa-clock-o"></i> <span>Critical Hours</span></a></li>
                 <li><a href="traffic_violation.php"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
                         <span>Traffic Violations</span></a></li>
+                <li><a href="admin_functions.php"><i class="fa fa-user-secret" aria-hidden="true"></i>
+                        <span>Admin Functions</span></a></li>
             </ul>
         </section>
         <!-- /.sidebar -->
