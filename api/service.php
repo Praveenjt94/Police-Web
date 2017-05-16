@@ -58,7 +58,7 @@ if (isset($_POST['login'])) {
     if (isset($_POST['driver'])) {
         $driver = 1;
     }
-    $sql = "INSERT INTO notifications(admin,driver,officer,message,created_at) VALUES(" . $admin . "," . $officer . "," . $driver . ",'" . $_POST['message'] . "', NOW())";
+    $sql = "INSERT INTO notifications(admin,officer,driver,message,created_at) VALUES(" . $admin . "," . $officer . "," . $driver . ",'" . $_POST['message'] . "', NOW())";
     if ($conn->query($sql)) {
         echo "Notification Saved";
     } else {

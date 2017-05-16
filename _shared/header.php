@@ -4,6 +4,14 @@ session_start();
 if (!isset($_SESSION['logged_user'])) {
     header("Location: login.php");
 }
+include_once('backend/dbConnect.php');
+// read notifications
+if($_SESSION['logged_user']['type'] == "officer"){
+    $sql = "SELECT * FROM notifications WHERE officer = 1";
+} else {
+    $sql = "SELECT * FROM notifications WHERE admin = 1";
+}
+$results = $conn->query($sql);
 ?>
 <!DOCTYPE html>
 <html>
@@ -95,8 +103,28 @@ if (!isset($_SESSION['logged_user'])) {
                     <li class="dropdown notifications-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-bell-o"></i>
-                            <span class="label label-warning">0</span>
+                            <span class="label label-warning"><?php echo $results->num_rows; ?></span>
                         </a>
+                        <ul class="dropdown-menu">
+                          <li>
+                            <!-- inner menu: contains the actual data -->
+                            <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 200px;">
+                            <ul class="menu" style="overflow: hidden; width: 100%; height: 200px;">
+                            <?php
+                                $count = 1;
+                                while ($row = $results->fetch_assoc()) {
+                            ?>
+                              <li>
+                                <a href="#">
+                                  <i class="fa fa-warning text-yellow"></i> <?php echo $row['message']; ?></a>
+                              </li>
+                            <?php
+                                }
+                            ?>
+                            </ul><div class="slimScrollBar" style="background: rgb(0, 0, 0); width: 3px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px;"></div><div class="slimScrollRail" style="width: 3px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div>
+                            </div>
+                          </li>
+                        </ul>
                     </li>
                     <!-- User Account: style can be found in dropdown.less -->
                     <li class="dropdown user user-menu">
