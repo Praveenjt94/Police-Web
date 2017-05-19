@@ -122,7 +122,7 @@ $results = $conn->query($sql);
                     </div>
                     <div class="modal-footer">
                         <input type="hidden" value="-1" id="remove_res_id">
-                        <button type="submit" class="btn btn-primary main-opt-btn">Save
+                        <button type="submit" class="btn btn-primary main-opt-btn">Send
                         </button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
