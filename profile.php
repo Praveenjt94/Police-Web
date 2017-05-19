@@ -71,14 +71,14 @@ include_once('_shared/header.php');
                             <strong><i class="fa fa-book margin-r-5"></i> Education</strong>
 
                             <p class="text-muted">
-                                B.S. in Computer Science from the University of Tennessee at Knoxville
+                                B.S. in Computer Science from the University of SLIIT
                             </p>
 
                             <hr>
 
                             <strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
 
-                            <p class="text-muted">Malibu, California</p>
+                            <p class="text-muted">Delkanda, Nugegoda</p>
 
                             <hr>
 
