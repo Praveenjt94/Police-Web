@@ -7,6 +7,12 @@ $results = $conn->query($sql);
 ?>
 
 
+<style>
+    .warn_input {
+        color: red;
+    }
+</style>
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -82,35 +88,48 @@ $results = $conn->query($sql);
         </div>
     </section>
 
-
     <div class="modal fade" id="addOfficerModal">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Add New Officer</h5>
                 </div>
-                <form action="api/service.php" method="post">
+                <form action="api/service.php" method="post" onsubmit="return validateOfficerForm();">
                     <div class="modal-body">
                         <input type="hidden" name="register" value="true">
                         <div class="form-group has-feedback">
-                            <input type="text" class="form-control" placeholder="Full name" name="name" required>
-                            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                            <input id="name" type="text" class="form-control" placeholder="Full name" name="name"
+                                   onkeypress="clearWarn('warn_name')"
+                                   onchange="clearWarn('warn_name')"
+                                   required>
+                            <span class="glyphicon glyphicon-user form-control-feedback warn_name"></span>
                         </div>
                         <div class="form-group has-feedback">
-                            <input type="text" class="form-control" placeholder="Officer ID" name="officer_id" required>
-                            <span class="glyphicon glyphicon-info-sign form-control-feedback"></span>
+                            <input id="officer_id" type="text" class="form-control" placeholder="Officer ID"
+                                   onkeypress="clearWarn('warn_officer_id')"
+                                   onchange="clearWarn('warn_officer_id')"
+                                   name="officer_id" required>
+                            <span class="glyphicon glyphicon-info-sign form-control-feedback warn_officer_id"></span>
                         </div>
                         <div class="form-group has-feedback">
-                            <input type="text" class="form-control" placeholder="NIC" name="nic" required>
-                            <span class="glyphicon glyphicon-folder-close form-control-feedback"></span>
+                            <input id="nic" type="text" class="form-control" placeholder="NIC" name="nic"
+                                   onkeypress="clearWarn('warn_nic')"
+                                   onchange="clearWarn('warn_nic')"
+                                   required>
+                            <span class="glyphicon glyphicon-folder-close form-control-feedback warn_nic"></span>
                         </div>
                         <div class="form-group has-feedback">
-                            <input type="text" class="form-control" placeholder="Telephone" name="telephone">
-                            <span class="glyphicon glyphicon-phone-alt form-control-feedback"></span>
+                            <input id="telephone" type="text" class="form-control" placeholder="Telephone"
+                                   onkeypress="clearWarn('warn_telephone')"
+                                   onchange="clearWarn('warn_telephone')"
+                                   name="telephone">
+                            <span class="glyphicon glyphicon-phone-alt form-control-feedback warn_telephone"></span>
                         </div>
                         <div class="form-group has-feedback">
-                            <input type="email" class="form-control" placeholder="Email" name="email">
-                            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                            <input id="email" type="email" class="form-control" placeholder="Email" name="email"
+                                   onkeypress="clearWarn('warn_email')"
+                                   onchange="clearWarn('warn_email')">
+                            <span class="glyphicon glyphicon-envelope form-control-feedback warn_email"></span>
                         </div>
                         <div class="form-group has-feedback">
                             <label>User Type</label>
